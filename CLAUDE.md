@@ -214,6 +214,55 @@ gspb_Css_Final(id, final_css, props);
 - [React Rooter](https://github.com/wpsoul/react-rooter) - React integration
 - [Greenshift AI Lab](https://github.com/wpsoul/greenshift-ai-lab) - Advanced patterns
 
+## Current Debug Notes (Button Block)
+
+### Known Issues Being Debugged
+1. **Button height collapse**: The button content (text + icon) is not maintaining proper height. The padding and line-height appear correct in CSS but the button visually collapses. Investigate if WordPress/Gutenberg theme styles are interfering.
+
+2. **CSS file location**: Button styles are in `assets/css/button.css` and enqueued via `render_block` filter in `altitude-blocks.php`
+
+### Button Block Architecture
+
+**Hybrid Rendering Approach**:
+- Buttons WITH icons use `save.js` output (passed through `$inner_content` in PHP) because `SVGViewer` component handles icon rendering
+- Buttons WITHOUT icons use full server-side rendering in `block.php`
+- This is determined in `block.php:60-72`
+
+**Icon Handling**:
+- Icons use `SVGViewer` component from `gspblib.components`
+- Do NOT pass `blockProps` to SVGViewer - it applies parent classes to the SVG
+- Icon is wrapped in `<span class="shadcn-btn-icon-wrap">`
+
+**CSS Specificity for Overrides**:
+- Custom styles (font-size, color, icon-size) use selector `.shadcn-btn.{localId}` for higher specificity
+- This is set in `edit.js:152-153`: `const btn_selector = '.shadcn-btn' + css_selector_by_user;`
+
+**Key Files**:
+- `src/blocks/button/edit.js` - Editor component, CSS generation
+- `src/blocks/button/save.js` - Frontend save (used for icon buttons)
+- `src/blocks/button/inspector.js` - Settings panels
+- `src/blocks/button/attributes.js` - Block attributes
+- `blockrender/button/block.php` - Server-side rendering
+- `assets/css/button.css` - Button styles
+
+**Inspector Panels**:
+- Button Settings (text, variant, size, full width, disabled)
+- Typography (font size)
+- Colors (text color, icon color)
+- Link Settings (URL, target, rel)
+- Icon (icon picker, position, size)
+- Local Styles (AttributeTabs)
+- Animation
+- Interaction Layers
+- Anchor & Root Class
+
+### Things to Check When Debugging
+1. Is `localId` class being output on the button element?
+2. Is the generated CSS being output in the page head?
+3. Check CSS specificity - button.css vs generated CSS order
+4. Check if theme styles override button styles
+5. Inspect the actual computed styles on button, `.shadcn-btn-text`, and `.shadcn-btn-icon-wrap`
+
 ## Development Notes
 
 ### Adding a New Block

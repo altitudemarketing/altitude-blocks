@@ -76,6 +76,11 @@ export default {
 		type: 'boolean',
 		default: false,
 	},
+	elementType: {
+		type: 'string',
+		default: 'button',
+		enum: ['button', 'link'],
+	},
 
 	// Icon attributes
 	icon: {
@@ -87,7 +92,7 @@ export default {
 	},
 	iconSize: {
 		type: 'string',
-		default: '1em',
+		default: '1.5em',
 	},
 	iconSvg: {
 		type: 'string',
@@ -99,6 +104,11 @@ export default {
 		type: 'string',
 	},
 	iconColor: {
+		type: 'string',
+	},
+
+	// Typography
+	fontSize: {
 		type: 'string',
 	},
 };

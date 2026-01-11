@@ -1,9 +1,0 @@
-{
-	"apiVersion": 2,
-	"name": "altitude-blocks/example",
-	"title": "Example",
-	"description": "Example block",
-	"category": "altitude-blocks",
-	"textdomain": "altitude-blocks",
-	"editorStyle": "altitude-blocks-editor-css"
-}

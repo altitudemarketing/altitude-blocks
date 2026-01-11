@@ -60,6 +60,7 @@ export default function edit(props) {
 		iconSize,
 		textColor,
 		iconColor,
+		fontSize,
 	} = props.attributes;
 
 	// Generate Unique ID for The Block
@@ -148,14 +149,22 @@ export default function edit(props) {
 	// Animation CSS Generation
 	final_css = aos_animation_cssGen(animation, css_selector_by_user, final_css, props);
 
+	// Use more specific selector for button overrides
+	const btn_selector = '.shadcn-btn' + css_selector_by_user;
+
 	// Add custom color CSS
 	if (textColor) {
-		final_css = gspb_cssGen(css_selector_by_user, ['color'], [textColor], final_css);
+		final_css = gspb_cssGen(btn_selector, ['color'], [textColor], final_css);
+	}
+
+	// Add font size CSS
+	if (fontSize) {
+		final_css = gspb_cssGen(btn_selector, ['font-size'], [fontSize], final_css);
 	}
 
 	// Icon color and size CSS
 	if (hasIcon) {
-		const iconSelector = css_selector_by_user + ' .shadcn-btn-icon-wrap svg';
+		const iconSelector = btn_selector + ' .shadcn-btn-icon-wrap svg';
 		if (iconColor) {
 			final_css = gspb_cssGen(iconSelector, ['fill'], [iconColor], final_css);
 		}
@@ -186,9 +195,10 @@ export default function edit(props) {
 	// Render icon using SVGViewer component
 	const renderIcon = () => {
 		if (!hasIcon) return null;
+		// Don't pass blockProps to SVGViewer - it would apply button classes to the SVG
 		return (
 			<span className="shadcn-btn-icon-wrap">
-				<SVGViewer attributeName="icon" blockProps={blockProps} {...props} />
+				<SVGViewer attributeName="icon" {...props} />
 			</span>
 		);
 	};

@@ -48,6 +48,7 @@ export default function save(props) {
 		rel,
 		disabled,
 		fullWidth,
+		elementType,
 		icon,
 		iconPosition,
 	} = props.attributes;
@@ -69,8 +70,8 @@ export default function save(props) {
 		props.attributes.className || '',
 	].filter(Boolean).join(' ');
 
-	// Determine element tag based on href
-	const ElementTag = href ? 'a' : 'button';
+	// Determine element tag based on elementType attribute
+	const ElementTag = elementType === 'link' ? 'a' : 'button';
 
 	const blockProps = {
 		...DynamicDataAttributes,
@@ -78,8 +79,8 @@ export default function save(props) {
 		className: buttonClasses,
 	};
 
-	// Add localId for styling
-	if (localId && (styleAttributes || !isEqual(animation, attributes.animation.default))) {
+	// Add localId for styling - always add if exists since CSS targets this class
+	if (localId) {
 		blockProps.className = blockProps.className + ' ' + localId;
 	}
 
@@ -88,36 +89,36 @@ export default function save(props) {
 		blockProps.id = anchor;
 	}
 
-	// Add link attributes
-	if (href) {
-		blockProps.href = href;
+	// Add link attributes if elementType is link
+	if (elementType === 'link') {
+		if (href) {
+			blockProps.href = href;
+		}
 		if (target && target !== '_self') {
 			blockProps.target = target;
 		}
 		if (rel) {
 			blockProps.rel = rel;
 		}
+	} else {
+		// Add button type for button element
+		blockProps.type = 'button';
 	}
 
 	// Add disabled state
 	if (disabled) {
-		if (href) {
+		if (elementType === 'link') {
 			blockProps['aria-disabled'] = 'true';
 		} else {
 			blockProps.disabled = true;
 		}
 	}
 
-	// Add button type if not a link
-	if (!href) {
-		blockProps.type = 'button';
-	}
-
 	return (
 		<ElementTag {...blockProps}>
 			{hasIcon && iconPosition === 'left' && (
 				<span className="shadcn-btn-icon-wrap">
-					<SVGViewer attributeName="icon" blockProps={blockProps} {...props} />
+					<SVGViewer attributeName="icon" {...props} />
 				</span>
 			)}
 			<span className="shadcn-btn-text">
@@ -125,7 +126,7 @@ export default function save(props) {
 			</span>
 			{hasIcon && iconPosition === 'right' && (
 				<span className="shadcn-btn-icon-wrap">
-					<SVGViewer attributeName="icon" blockProps={blockProps} {...props} />
+					<SVGViewer attributeName="icon" {...props} />
 				</span>
 			)}
 		</ElementTag>

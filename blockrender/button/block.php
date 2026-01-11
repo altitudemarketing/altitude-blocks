@@ -75,6 +75,7 @@ class ButtonBlock
 		$text = !empty($attrs['text']) ? $attrs['text'] : __('Button', 'altitude-blocks');
 		$variant = !empty($attrs['variant']) ? $attrs['variant'] : 'default';
 		$size = !empty($attrs['size']) ? $attrs['size'] : 'default';
+		$element_type = !empty($attrs['elementType']) ? $attrs['elementType'] : 'button';
 		$href = !empty($attrs['href']) ? $attrs['href'] : '';
 		$target = !empty($attrs['target']) ? $attrs['target'] : '_self';
 		$rel = !empty($attrs['rel']) ? $attrs['rel'] : '';
@@ -86,6 +87,9 @@ class ButtonBlock
 
 		// Color attributes
 		$text_color = !empty($attrs['textColor']) ? $attrs['textColor'] : '';
+
+		// Typography
+		$font_size = !empty($attrs['fontSize']) ? $attrs['fontSize'] : '';
 
 		// Build classes array
 		$classes = array('shadcn-btn');
@@ -127,6 +131,9 @@ class ButtonBlock
 		if ($text_color) {
 			$styles[] = 'color:' . esc_attr($text_color);
 		}
+		if ($font_size) {
+			$styles[] = 'font-size:' . esc_attr($font_size);
+		}
 
 		$style_string = !empty($styles) ? ' style="' . implode(';', $styles) . '"' : '';
 
@@ -138,16 +145,17 @@ class ButtonBlock
 		// Build content (no icon for server-side rendering - icons use save.js output)
 		$content = '<span class="shadcn-btn-text">' . wp_kses_post($text) . '</span>';
 
-		// Build output
-		if ($href && !$disabled) {
+		// Build output based on element type
+		if ($element_type === 'link') {
 			// Render as anchor tag
 			$output = sprintf(
-				'<a href="%s" class="%s"%s%s%s%s>%s</a>',
-				esc_url($href),
+				'<a%s class="%s"%s%s%s%s%s>%s</a>',
+				$href ? sprintf(' href="%s"', esc_url($href)) : '',
 				esc_attr($class_string),
 				$target !== '_self' ? sprintf(' target="%s"', esc_attr($target)) : '',
 				$rel ? sprintf(' rel="%s"', esc_attr($rel)) : '',
 				$anchor ? sprintf(' id="%s"', esc_attr($anchor)) : '',
+				$disabled ? ' aria-disabled="true"' : '',
 				$style_string,
 				$content
 			);

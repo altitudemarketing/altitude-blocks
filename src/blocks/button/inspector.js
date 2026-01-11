@@ -44,6 +44,12 @@ const ICON_POSITION_OPTIONS = [
 	{ label: __('Right', 'altitude-blocks'), value: 'right' },
 ];
 
+// Element type options
+const ELEMENT_TYPE_OPTIONS = [
+	{ label: __('Button', 'altitude-blocks'), value: 'button' },
+	{ label: __('Link', 'altitude-blocks'), value: 'link' },
+];
+
 const Inspector = (props) => {
 	const {
 		attributes: {
@@ -60,11 +66,13 @@ const Inspector = (props) => {
 			rel,
 			disabled,
 			fullWidth,
+			elementType,
 			icon,
 			iconPosition,
 			textColor,
 			iconColor,
 			iconSize,
+			fontSize,
 		},
 		setAttributes,
 	} = props;
@@ -101,6 +109,13 @@ const Inspector = (props) => {
 							options={SIZE_OPTIONS}
 							onChange={(value) => setAttributes({ size: value })}
 						/>
+						<SelectControl
+							label={__('Element Type', 'altitude-blocks')}
+							value={elementType || 'button'}
+							options={ELEMENT_TYPE_OPTIONS}
+							onChange={(value) => setAttributes({ elementType: value })}
+							help={__('Button for actions, Link for navigation.', 'altitude-blocks')}
+						/>
 						<ToggleControl
 							label={__('Full Width', 'altitude-blocks')}
 							checked={fullWidth}
@@ -110,6 +125,17 @@ const Inspector = (props) => {
 							label={__('Disabled', 'altitude-blocks')}
 							checked={disabled}
 							onChange={(value) => setAttributes({ disabled: value })}
+						/>
+					</PanelBody>
+
+					{/* Typography Panel */}
+					<PanelBody title={__('Typography', 'altitude-blocks')} initialOpen={false}>
+						<TextControl
+							label={__('Font Size', 'altitude-blocks')}
+							value={fontSize || ''}
+							onChange={(value) => setAttributes({ fontSize: value })}
+							placeholder="e.g., 16px, 1rem, 1.25em"
+							help={__('Enter a CSS font size value.', 'altitude-blocks')}
 						/>
 					</PanelBody>
 
