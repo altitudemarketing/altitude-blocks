@@ -6,12 +6,12 @@ import blockIcon from './icon';
 import './styles.editor.scss';
 import attributes from './attributes';
 
-registerBlockType( 'greenlightaddon/example', {
-    category: 'greenlightaddon',
+registerBlockType( 'altitude-blocks/example', {
+    category: 'altitude-blocks',
     icon: blockIcon,
     example: {},
-    title: __('Example Greenlight Block', 'greenlightaddon'),
-    description: __('Example block', 'greenlightaddon'),
+    title: __('Example Block', 'altitude-blocks'),
+    description: __('Example block', 'altitude-blocks'),
     keywords: [],
     attributes,
     edit,

@@ -31,7 +31,7 @@ const PlaceholdersPopover = (props) => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text)
                 .then(() => {
-                    wp.data.dispatch('core/notices').createNotice('success', __('Copied to clipboard', 'greenlightaddon'));
+                    wp.data.dispatch('core/notices').createNotice('success', __('Copied to clipboard', 'altitude-blocks'));
                 })
                 .catch(err => {
                     console.error('Error in copying text:', err);

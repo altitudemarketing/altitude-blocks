@@ -74,7 +74,7 @@ const Inspector = (props) => {
 										className="gspb_inspector_btn"
 										style={{ padding: "4.5px", fontSize: 10, margin: 0 }}
 									>
-										{__("Placeholders", 'greenlightaddon')}
+										{__("Placeholders", 'altitude-blocks')}
 									</button>
 								</div>
 								{openPopupArray && openPopupArray["dynamic-placeholders-content"] &&
@@ -85,7 +85,7 @@ const Inspector = (props) => {
 										}}
 									>
 										<div className="gspb_inspector_preset_styles gspb_inspector_preset_border_styles" style={{ minWidth: 260, padding: 10 }}>
-											<span style={{ fontSize: 12, fontWeight: 600, display: 'block', marginBottom: 5, marginTop: 5 }}>{__("Dynamic Placeholders", 'greenlightaddon')}</span>
+											<span style={{ fontSize: 12, fontWeight: 600, display: 'block', marginBottom: 5, marginTop: 5 }}>{__("Dynamic Placeholders", 'altitude-blocks')}</span>
 											<div style={{ width: 340, display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 10 }}>
 												<PlaceholdersPopover function_callback={(placeholder) => {
 													setAttributes({ textContent: textContent + placeholder });
@@ -95,7 +95,7 @@ const Inspector = (props) => {
 									</Popover>
 								}
 								<TextareaControl
-									label={__('Content', 'greenlightaddon')}
+									label={__('Content', 'altitude-blocks')}
 									value={textContent}
 									onChange={value => setAttributes({ textContent: value })}
 								/>
@@ -107,7 +107,7 @@ const Inspector = (props) => {
 					<PanelBody
 						title={
 							<div className="gspb-inspector-flex-row gs-flex-space-between gs-gutter-10 gs-flex-align-center" style={{ width: '100%' }}>
-								{__('Local Styles', 'greenlightaddon')}
+								{__('Local Styles', 'altitude-blocks')}
 								<div className="gspb-inspector-flex-row gs-flex-space-between gs-gutter-10 gs-flex-align-center">
 									<button className="gspb_inspector_btn gspb_inspector_btn--small" style={{ cursor: 'pointer', border: 'none', background: 'none', padding: 0, margin: 0, transform: 'translateX(5px)', color: enableSpecificity ? '#2084f9' : '#6c757d' }}
 										onClick={(e) => {
@@ -116,7 +116,7 @@ const Inspector = (props) => {
 											setIsCodeInspectorVisible(!isCodeInspectorVisible);
 										}}
 									>
-										<i className="rhicon rhi-code" style={{ marginLeft: 0, marginRight: 0 }} title={__('Show CSS code', 'greenlightaddon')}></i>
+										<i className="rhicon rhi-code" style={{ marginLeft: 0, marginRight: 0 }} title={__('Show CSS code', 'altitude-blocks')}></i>
 									</button>
 									<button className="gspb_inspector_btn gspb_inspector_btn--small" style={{ cursor: 'pointer', border: 'none', background: 'none', padding: 0, margin: 0, transform: 'translateX(5px)', color: enableSpecificity ? '#2084f9' : '#6c757d' }}
 										onClick={(e) => {
@@ -125,7 +125,7 @@ const Inspector = (props) => {
 											setAttributes({ enableSpecificity: !enableSpecificity });
 										}}
 									>
-										<i className="rhicon rhi-dot-circle" style={{ marginLeft: 0, marginRight: 0 }} title={__('Enable higher specificity for local styles', 'greenlightaddon')}></i>
+										<i className="rhicon rhi-dot-circle" style={{ marginLeft: 0, marginRight: 0 }} title={__('Enable higher specificity for local styles', 'altitude-blocks')}></i>
 									</button>
 								</div>
 
@@ -146,7 +146,7 @@ const Inspector = (props) => {
 
 					</PanelBody>
 					<PanelBody
-						title={__("Icon Component", 'greenlightaddon')}
+						title={__("Icon Component", 'altitude-blocks')}
 						initialOpen={false}
 					>
 						<IconPicker
@@ -159,7 +159,7 @@ const Inspector = (props) => {
 						/>
 					</PanelBody>
 					<PanelBody
-						title={__("Extra Components", 'greenlightaddon')}
+						title={__("Extra Components", 'altitude-blocks')}
 						initialOpen={false}
 					>
 						<div style={{ justifyContent: "flex-end", marginBottom: 10, display: "flex" }}>
@@ -207,7 +207,7 @@ const Inspector = (props) => {
 						</div>
 					</PanelBody>
 					<PanelBody
-						title={__("Animation", 'greenlightaddon')}
+						title={__("Animation", 'altitude-blocks')}
 						initialOpen={false}
 						className={`${!animationchange ? '' : 'gspb_panel_changed'}`}
 					>
@@ -217,7 +217,7 @@ const Inspector = (props) => {
 						/>
 					</PanelBody>
 					<PanelBody
-						title={__("Interaction Layers", 'greenlightaddon')}
+						title={__("Interaction Layers", 'altitude-blocks')}
 						initialOpen={false}
 						className={`${interactionchange ? 'gspb_panel_changed' : ''}`}
 					>
@@ -225,13 +225,13 @@ const Inspector = (props) => {
 					</PanelBody>
 
 					<PanelBody
-						title={__("Anchor & Root Class", 'greenlightaddon')}
+						title={__("Anchor & Root Class", 'altitude-blocks')}
 						initialOpen={false}
 						className={`${(anchor || staticLocalId) ? 'gspb_panel_changed' : ''}`}
 					>
 						<TextareaControl
-							label={__('Anchor', 'greenlightaddon')}
-							help={__("Set an anchor (ID) for this element. Available placeholders: {POST_ID}", 'greenlightaddon')}
+							label={__('Anchor', 'altitude-blocks')}
+							help={__("Set an anchor (ID) for this element. Available placeholders: {POST_ID}", 'altitude-blocks')}
 							value={anchor}
 							onChange={value => {
 								let newvalue = value.trim(); // Remove leading and trailing spaces

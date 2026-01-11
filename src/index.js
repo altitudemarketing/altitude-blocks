@@ -10,3 +10,4 @@
  */
 
 import './blocks/example';
+import './blocks/button';

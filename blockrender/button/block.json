@@ -1,0 +1,13 @@
+{
+	"apiVersion": 2,
+	"name": "altitude-blocks/button",
+	"title": "Shadcn Button",
+	"description": "A button component with multiple variants and sizes following Shadcn design system.",
+	"category": "altitude-blocks",
+	"textdomain": "altitude-blocks",
+	"editorStyle": "altitude-blocks-editor-css",
+	"supports": {
+		"html": false,
+		"anchor": true
+	}
+}

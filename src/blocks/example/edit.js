@@ -147,7 +147,7 @@ export default function edit(props) {
 				<ElementTag {...blockProps}>
 					<RichText
 						tagName={'span'}
-						placeholder={__("Greenlight - Page-Building Gutenberg Blocks", 'greenlightaddon')}
+						placeholder={__("Enter text...", 'altitude-blocks')}
 						value={textContent}
 						onChange={(value) => {
 							props.setAttributes({ textContent: value });

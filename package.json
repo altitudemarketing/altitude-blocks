@@ -1,7 +1,7 @@
 {
-  "name": "greenlightaddon",
-  "version": "1.0.0",
-  "description": "Greenlight Addon example",
+  "name": "altitude-blocks",
+  "version": "0.1.0",
+  "description": "Shadcn design system components for Greenshift/GreenLight",
   "main": "index.js",
   "devDependencies": {
     "@wordpress/scripts": "^30.23.0"

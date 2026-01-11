@@ -17,7 +17,7 @@ A powerful WordPress plugin that extends Gutenberg blocks with Greenlight's high
 
 - WordPress 5.0+ (Gutenberg support)
 - Greenlight Builder plugin or Greenshift plugin (parent plugin)
-- Node.js 14+ (for development)
+- Bun (for development)
 - PHP 7.4+
 
 ## 🛠️ Installation
@@ -30,12 +30,12 @@ cd greenlightaddon
 
 2. Install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 3. Build the plugin:
 ```bash
-npm run build
+bun run build
 ```
 
 4. Activate the plugin through the WordPress admin panel
@@ -44,10 +44,10 @@ npm run build
 
 ### Available Scripts
 
-- `npm start` - Start development mode with hot reloading
-- `npm run build` - Build production assets
-- `npm run lint:js` - Lint JavaScript files
-- `npm run lint:style` - Lint CSS files
+- `bun start` - Start development mode with hot reloading
+- `bun run build` - Build production assets
+- `bun run lint:js` - Lint JavaScript files
+- `bun run lint:style` - Lint CSS files
 
 ### Project Structure
 

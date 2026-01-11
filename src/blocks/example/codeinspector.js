@@ -297,20 +297,20 @@ const CodeInspector = (props) => {
         <>
             <div style={{ marginBottom: 15 }}>
                 <div style={{ margin: '0 0 10px 0', fontSize: '13px' }}>
-                    {__('Desktop CSS', 'greenlightaddon')}
+                    {__('Desktop CSS', 'altitude-blocks')}
                 </div>
                 <TextareaControl
                     value={generateCSSForDevice(0)}
                     onChange={(value) => {
                         convertCSSToAttributesForDevice(value, 0)
                     }}
-                    placeholder={__('Add properties in Style section below..', 'greenlightaddon')}
+                    placeholder={__('Add properties in Style section below..', 'altitude-blocks')}
                 />
             </div>
 
             <div style={{ marginBottom: 15 }}>
                 <div style={{ margin: '0 0 10px 0', fontSize: '13px' }}>
-                    {__('Tablet CSS', 'greenlightaddon')}
+                    {__('Tablet CSS', 'altitude-blocks')}
                 </div>
                 <TextareaControl
                     value={generateCSSForDevice(1)}
@@ -322,7 +322,7 @@ const CodeInspector = (props) => {
 
             <div style={{ marginBottom: 15 }}>
                 <div style={{ margin: '0 0 10px 0', fontSize: '13px' }}>
-                    {__('Landscape Mobile CSS', 'greenlightaddon')}
+                    {__('Landscape Mobile CSS', 'altitude-blocks')}
                 </div>
                 <TextareaControl
                     value={generateCSSForDevice(2)}
@@ -335,7 +335,7 @@ const CodeInspector = (props) => {
 
             <div style={{ marginBottom: 15 }}>
                 <div style={{ margin: '0 0 10px 0', fontSize: '13px' }}>
-                    {__('Portrait Mobile CSS', 'greenlightaddon')}
+                    {__('Portrait Mobile CSS', 'altitude-blocks')}
                 </div>
                 <TextareaControl
                     value={generateCSSForDevice(3)}
@@ -348,7 +348,7 @@ const CodeInspector = (props) => {
 
             <div style={{ marginBottom: 15 }}>
                 <div style={{ margin: '0 0 10px 0', fontSize: '13px' }}>
-                    {__('Custom CSS', 'greenlightaddon')}
+                    {__('Custom CSS', 'altitude-blocks')}
                 </div>
                 <TextareaControl
                     value={styleAttributes?.customCSS_Extra || ''}
